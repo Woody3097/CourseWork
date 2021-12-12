@@ -1,0 +1,17 @@
+.header {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  background-color: #125699;
+  color: #333333;
+}
+
+span {
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+span:hover {
+  text-decoration: underline;
+}
