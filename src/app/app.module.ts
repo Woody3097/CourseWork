@@ -6,11 +6,12 @@ import { HeaderComponent } from './core/header/header.component';
 import { StudentComponent } from './core/student/student.component';
 import { TeacherComponent } from './core/teacher/teacher.component';
 import { ScheduleComponent } from './core/schedule/schedule.component';
-import {RouterModule} from "@angular/router";
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 const routes = [
   {
-    path: 'main',
+    path: 'schedule',
     component: ScheduleComponent,
   },
   {
@@ -23,7 +24,7 @@ const routes = [
   },
   {
     path: '',
-    redirectTo: 'main',
+    redirectTo: 'schedule',
     pathMatch: 'full',
   }
 ]
@@ -39,6 +40,7 @@ const routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

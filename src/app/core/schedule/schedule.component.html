@@ -1,1 +1,26 @@
-<p>schedule works!</p>
+<div>
+  <div class="wrapper">
+    <div>
+      <span>Schedule</span><span *ngIf="selectedGroup"> for {{ selectedGroup }}</span>
+    </div>
+    <input placeholder="Enter group name..." [(ngModel)]="selectedGroup">
+    <button>Print schedule</button>
+  </div>
+
+  <table>
+    <tr>
+      <th>Group</th>
+      <th>Subject</th>
+      <th>Teacher</th>
+      <th>Date</th>
+      <th>Cabinet</th>
+    </tr>
+    <tr>
+      <td>TM-91</td>
+      <td>Math</td>
+      <td>Alex Smith</td>
+      <td>12.12.21</td>
+      <td>405</td>
+    </tr>
+  </table>
+</div>
