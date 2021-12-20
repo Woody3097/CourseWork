@@ -1,0 +1,22 @@
+.wrapper {
+  width: 300px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+}
+.row {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  display: block;
+  color: #e6b333;
+  margin-top: 20px;
+}
+
+input {
+  margin: 5px 0;
+}

@@ -14,7 +14,8 @@ class UserController {
     const { group } = req.body;
 
     conn.query("SELECT groupId from groups_ where group_name = ?", [group]).then(data => {
-      conn.query("SELECT * from exams where groupId = ?", [data[0][0]]).then(data1 => {
+      conn.query("SELECT * from schedule_of_exam.exams where exams.groupId = ?", [data[0][0].groupId]).then(data1 => {
+        console.log(data1[0])
           res.status(200).send(data1[0]);
 
       }).catch(err => res.send(err))
@@ -61,6 +62,22 @@ class UserController {
 
     conn.query('select full_name from schedule_of_exam.users where userId = ?', [id]).then(data => {
       res.send(data[0]);
+    })
+  }
+
+  addStudent(req, res) {
+    const { full_name, code, group } = req.body;
+
+    conn.query('INSERT INTO `schedule_of_exam`.`users` (`full_name`, `password`, `isTeacher`, `isAdmin`) VALUES (?, ?, 0, 0);', [full_name, code]).then(data => {
+      res.send(data);
+    })
+  }
+
+  addTeacher(req, res) {
+    const { full_name, code, position } = req.body;
+
+    conn.query('INSERT INTO `schedule_of_exam`.`users` (`full_name`, `password`, `isTeacher`, `isAdmin`) VALUES (?, ?, 1, 0);', [full_name, code]).then(data => {
+      res.send(data);
     })
   }
 }

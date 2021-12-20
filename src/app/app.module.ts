@@ -13,6 +13,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {SignInGuard} from "./core/sign-in/sign-in.guard";
 import { StatementComponent } from './core/statement/statement.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import { AdminComponent } from './core/admin/admin.component';
 
 const routes = [
   {
@@ -20,6 +21,10 @@ const routes = [
     component: MainComponent,
     canActivate: [SignInGuard],
     loadChildren: () => import('./core/main/main.module').then(m => m.MainModule),
+  },
+  {
+    path: 'admin',
+    component: AdminComponent,
   },
   {
     path: 'sign-in',
@@ -41,7 +46,8 @@ const routes = [
   declarations: [
     AppComponent,
     SignInComponent,
-    StatementComponent
+    StatementComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

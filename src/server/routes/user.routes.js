@@ -9,5 +9,7 @@ router.post("/getGroupById", userController.getGroupById);
 router.post("/getStudentByGroupId", userController.getStudentByGroupId);
 router.post("/getStudentNameById", userController.getStudentNameById);
 router.post("/getTeacherById", userController.getTeacherById);
+router.post("/addStudent", userController.addStudent);
+router.post("/addTeacher", userController.addTeacher);
 
 module.exports = router;

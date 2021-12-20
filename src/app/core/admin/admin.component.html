@@ -1,0 +1,20 @@
+<div class="wrapper">
+  <div>
+    <span class="title">Додати студента</span>
+  </div>
+  <div class="row">
+    <input placeholder="Введіть повне імя" [(ngModel)]="full_name_student">
+    <input placeholder="Введіть персональний код" [(ngModel)]="code_student">
+    <input placeholder="Введіть группу" [(ngModel)]="group">
+    <button (click)="addStudent()">Додати студента</button>
+  </div>
+  <div>
+    <span class="title">Додати вчителя</span>
+  </div>
+  <div class="row">
+    <input placeholder="Введіть повне імя" [(ngModel)]="full_name">
+    <input placeholder="Введіть персональний код" [(ngModel)]="code">
+    <input placeholder="Введіть посаду" [(ngModel)]="position">
+    <button (click)="addTeacher()">Додати вчителя</button>
+  </div>
+</div>

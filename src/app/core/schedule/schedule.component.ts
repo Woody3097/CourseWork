@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ToastrService} from "ngx-toastr";
 import {MatDialog} from "@angular/material/dialog";
-import {Statement} from "@angular/compiler";
 import {StatementComponent} from "../statement/statement.component";
 import {first} from "rxjs";
 
@@ -56,7 +55,6 @@ export class ScheduleComponent implements OnInit {
       return;
     }
     this.http.post('http://localhost:3000/getExamsByTeacher', { fullName: this.selectedTeacher }).subscribe((res: any) => {
-      debugger
       if (!res?.length) {
         this.toastr.info('Даних не знайдено!');
       }

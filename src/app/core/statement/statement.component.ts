@@ -16,13 +16,6 @@ export class StatementComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private ref: MatDialogRef<any>, private http: HttpClient) {
     this.exam = data;
-    let date_ = new Date(this.exam.date);
-
-    const date = date_.getUTCDate();
-    const month = date_.getUTCMonth() + 1;
-    const year = date_.getUTCFullYear();
-
-    this.exam.date = date + "/" + month + "/" + year;
     this.exam.studentList = [];
     this.http.post('http://localhost:3000/getStudentByGroupId',{ id : this.exam.groupId }).subscribe((res: any) => {
       const list = res;
