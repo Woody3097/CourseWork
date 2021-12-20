@@ -1,26 +1,36 @@
 <div>
   <div class="wrapper">
     <div>
-      <span>Schedule</span><span *ngIf="selectedGroup"> for {{ selectedGroup }}</span>
+      <span class="title">Розклад екзаменів</span>
     </div>
-    <input placeholder="Enter group name..." [(ngModel)]="selectedGroup">
-    <button>Print schedule</button>
+    <div class="row">
+      <input placeholder="Введіть назву групи" (input)="searchedByGroup = false" [(ngModel)]="selectedGroup">
+      <button (click)="getExamsByGroup()">Знайти екзамени</button>
+    </div>
+    <span class="white" *ngIf="searchedByGroup">Всього <span class="yellow">{{allExamsByGroup}}</span> екзаменів для <span class="yellow">{{selectedGroup}}</span></span>
+    <div class="row">
+      <input placeholder="Введіть імя викладача" (input)="searchedByTeacher = false" [(ngModel)]="selectedTeacher">
+      <button (click)="getExamsByTeacher()">Знайти екзамени</button>
+    </div>
+    <span class="white" *ngIf="searchedByTeacher">Всього <span class="yellow">{{allExamByTeacher}}</span> екзаменів для <span class="yellow">{{selectedTeacher}}</span></span>
   </div>
 
-  <table>
+  <table *ngIf="exams.length">
     <tr>
-      <th>Group</th>
-      <th>Subject</th>
-      <th>Teacher</th>
-      <th>Date</th>
-      <th>Cabinet</th>
+      <th>Група</th>
+      <th>Предмет</th>
+      <th>Викладач</th>
+      <th>Дата</th>
+      <th>Аудиторія</th>
+      <th></th>
     </tr>
-    <tr>
-      <td>TM-91</td>
-      <td>Math</td>
-      <td>Alex Smith</td>
-      <td>12.12.21</td>
-      <td>405</td>
+    <tr *ngFor="let exam of exams">
+      <td>{{exam.group_name}}</td>
+      <td>{{exam.subject}}</td>
+      <td>{{exam.full_name}}</td>
+      <td>{{exam.date}}</td>
+      <td>{{exam.classroom}}</td>
+      <td><button (click)="openStatement(exam)">Відомість</button></td>
     </tr>
   </table>
 </div>

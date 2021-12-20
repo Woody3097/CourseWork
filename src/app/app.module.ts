@@ -2,29 +2,37 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './core/header/header.component';
-import { StudentComponent } from './core/student/student.component';
-import { TeacherComponent } from './core/teacher/teacher.component';
-import { ScheduleComponent } from './core/schedule/schedule.component';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { SignInComponent } from './core/sign-in/sign-in.component';
+import { MainComponent } from "./core/main/main.component";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { MatIconModule } from '@angular/material/icon';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {ToastrModule} from "ngx-toastr";
+import {HttpClientModule} from "@angular/common/http";
+import {SignInGuard} from "./core/sign-in/sign-in.guard";
+import { StatementComponent } from './core/statement/statement.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 const routes = [
   {
-    path: 'schedule',
-    component: ScheduleComponent,
+    path: 'main',
+    component: MainComponent,
+    canActivate: [SignInGuard],
+    loadChildren: () => import('./core/main/main.module').then(m => m.MainModule),
   },
   {
-    path: 'student',
-    component: StudentComponent,
-  },
-  {
-    path: 'teacher',
-    component: TeacherComponent,
+    path: 'sign-in',
+    component: SignInComponent,
   },
   {
     path: '',
-    redirectTo: 'schedule',
+    redirectTo: 'sign-in',
+    pathMatch: 'full',
+  },
+  {
+    path: '**',
+    redirectTo: 'sign-in',
     pathMatch: 'full',
   }
 ]
@@ -32,15 +40,19 @@ const routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    StudentComponent,
-    TeacherComponent,
-    ScheduleComponent
+    SignInComponent,
+    StatementComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
+    MatIconModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
     FormsModule,
+    ToastrModule.forRoot(),
+    HttpClientModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
