@@ -1,0 +1,8 @@
+<div class="wrapper">
+  <span>Відомість про екзамен №{{exam.examId}}</span>
+  <span>Предмет: {{exam.subject}}</span>
+  <span>Викладач: {{exam.full_name}}</span>
+  <span>Дата проведення: {{exam.date}}</span>
+  <span>Студенти групи:</span>
+  <span *ngFor="let student of exam.studentList">{{student.student_name}}</span>
+</div>

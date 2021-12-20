@@ -1,0 +1,26 @@
+<div class="wrapper">
+  <div class="header">
+    <h3 class="sign-in">Вхід</h3>
+  </div>
+  <div>
+    <div class="row">
+      <span class="type" (click)="toggleAdmin(false)" [class.active]="!isAdmin">Користувач</span>
+      <span class="type" (click)="toggleAdmin(true)" [class.active]="isAdmin">Адмін</span>
+    </div>
+    <div>
+      <label class="lock">
+        <mat-icon>account_circle</mat-icon>
+      </label>
+      <input name="name" type="text" placeholder="Повне імя: Іванов Іван" [(ngModel)]="fullName"/>
+    </div>
+    <div>
+      <label class="lock">
+        <mat-icon>lock</mat-icon>
+      </label>
+      <input type="text" name="name" placeholder="Персональний код" [(ngModel)]="code"/>
+    </div>
+    <div>
+      <button (click)="submit()" class="button">Ввійти</button>
+    </div>
+  </div>
+</div>
